@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #pie{
+            width:500px;
+            height:500px;
+            margin:100px auto 0;
+            border:1px solid #eee;
+        }
+    </style>
+</head>
+<body>
+    <div id="pie"></div>
+
+    <script src="./echarts.min.js"></script>
+    <script>
+        var data = [
+            { name:"小明", value:84 },
+            { name:"小黄", value:54 },
+            { name:"小强", value:65 },
+            { name:"小张", value:78 },
+            { name:"小红", value:85 }
+        ]
+        function drawPie (data) {
+            var myChart = echarts.init(document.getElementById('pie'))
+            var option = {
+                title: {
+                    text: "2017期末考试成绩",
+                    x: "center"
+                },
+                tooltip: {
+                    trigger: "item",
+                    formatter: "{a}<br />{b}: {c}({d}%)"
+                },
+                legend: {
+                    orient: "vertical",
+                    left:"left",
+                    data:["小明","小黄","小强","小张","小红"]
+                },
+                series: {
+                    name: "考试成绩:",
+                    type: "pie",
+                    radius: "55%",
+                    center: ["50%", "50%"],
+                    itemStyle:{
+                    },
+                    data:data
+                } 
+            }
+            myChart.setOption(option, true)
+        } 
+        drawPie(data)
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>
